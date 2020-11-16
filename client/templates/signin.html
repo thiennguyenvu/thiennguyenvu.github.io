@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/style.css')}}">
+    </head>
+    <body>
+        <div class="imgcontainer">
+            <img src="{{ url_for('static', filename='/images/cat.jpg') }}" alt="Avatar" class="avatar">
+        </div>
+        <div class="login">
+			<h1>Login</h1>
+			<div class="links">
+				<a href="{{ url_for('sign_up') }}" class="active">Login</a>
+				<a href="{{ url_for('sign_in') }}">Register</a>
+			</div>
+			<form action="{{ url_for('sign_up') }}" method="post">
+				<label for="username">
+					<i class="fas fa-user"></i>
+				</label>
+				<input type="text" name="username" placeholder="Username" id="username" required>
+				<label for="password">
+					<i class="fas fa-lock"></i>
+				</label>
+				<input type="password" name="password" placeholder="Password" id="password" required>
+				<div class="msg">{{ msg }}</div>
+				<input type="submit" value="Login">
+			</form>
+		</div>
+    </div>
+
+    <!-- <div class="container" style="background-color:#f1f1f1">
+        <button type="button" class="cancelbtn">Cancel</button>
+        <span class="psw">Forgot <a href="#">password?</a></span>
+    </div> -->
+    </form>
+
+    </body>
+</html>
