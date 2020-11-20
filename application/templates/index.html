@@ -1,5 +1,8 @@
 {% extends 'layout.html' %}
 
-{% block content %}
+{% block body %}
     <div>Hello, This is my first Flask App</div>
-{% endblock content %}
+    {% for post in posts %}
+        <div><p>{{ post.author.username }}: <b>{{ post.body }}</b></p></div>
+    {% endfor %}
+{% endblock body %}
