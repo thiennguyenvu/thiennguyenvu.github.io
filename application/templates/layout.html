@@ -9,9 +9,22 @@
     </head>
     <body>
         <div>
-            Menu:
-            <a href="{{ url_for('index') }}">Home</a>
-            <a href="{{ url_for('login') }}">Login</a>
+            Quick Menu:
+            <span>
+                <a href="{{ url_for('index') }}">Home</a> |
+            </span>
+            {% if current_user.is_anonymous %}
+            <span>
+                <a href="{{ url_for('login') }}">Login</a> |
+            </span>
+            <span>
+                <a href="{{ url_for('sign_up') }}">Sign Up</a>
+            </span>
+            {% else %}
+            <span>
+                <a href="{{ url_for('log_out') }}">Log out</a>
+            </span>
+            {% endif %}
         </div>
         <hr>
         {% with messages = get_flashed_messages() %}

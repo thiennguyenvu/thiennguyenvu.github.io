@@ -1,7 +1,10 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-    <div>Sign In</div>
+    <div>
+        <span>Sign In</span>
+        <span> | New User? <a href="{{ url_for('sign_up') }}">Click to Register!</a></span>  
+    </div> 
     <form action="" method="POST" novalidate>
     {{ form.hidden_tag() }}
         <p>
