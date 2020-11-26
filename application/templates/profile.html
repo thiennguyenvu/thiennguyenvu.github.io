@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <div>
+        <p style="font-size: 30px; font-weight: bold; text-align: center;">Information</p>
+        <div>User: {{ current_user.username }} - UID: {{ current_user.id }}</div>
+        <div>Your email: {{ current_user.email }}</div>
+        <div>Your password: {{ current_user.password_hash }}</div>
+    </div>
+{% endblock body %}

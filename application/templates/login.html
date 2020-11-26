@@ -4,7 +4,10 @@
     <div>
         <span>Sign In</span>
         <span> | New User? <a href="{{ url_for('sign_up') }}">Click to Register!</a></span>  
-    </div> 
+    </div>
+    <div class="imgcontainer">
+        <img src="{{ url_for('static', filename='/images/login/cat.jpg') }}" alt="Avatar" class="avatar">
+    </div>
     <form action="" method="POST" novalidate>
     {{ form.hidden_tag() }}
         <p>

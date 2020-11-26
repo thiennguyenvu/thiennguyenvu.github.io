@@ -6,27 +6,39 @@
     {% else %}
         <title>Welcome to Thien's website</title>
     {% endif %}
+    {% block head %}
+    {% endblock head %}
+    <!-- external js STARTS -->
+        <link rel="stylesheet" href="fontawesome/css/all.css">
+        <link rel="stylesheet" href="css/layout.css">
+        <link rel="stylesheet" href="css/login.css">
+        <script src="js/jquery.min.js"></script>
+        <script src="js/general.js"></script>
+    <!-- external js ENDS -->
     </head>
-    <body>
-        <div>
-            Quick Menu:
-            <span>
-                <a href="{{ url_for('index') }}">Home</a> |
-            </span>
-            {% if current_user.is_anonymous %}
-            <span>
-                <a href="{{ url_for('login') }}">Login</a> |
-            </span>
-            <span>
-                <a href="{{ url_for('sign_up') }}">Sign Up</a>
-            </span>
-            {% else %}
-            <span>
-                <a href="{{ url_for('log_out') }}">Log out</a>
-            </span>
-            {% endif %}
-        </div>
-        <hr>
+    <body class="loggedin">
+        <nav class="navtop">
+            <div>
+                <a href="{{ url_for('index') }}">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                {% if current_user.is_anonymous %}
+                <a href="{{ url_for('login') }}">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </a>
+                {% else %}
+                <a href="{{ url_for('charts') }}">
+                    <i class="fas fa-chart-bar"></i> Charts 
+                </a>
+                <a href="{{ url_for('profile') }}">
+                    <i class="far fa-id-card"></i> Profile
+                </a>
+                <a href="{{ url_for('log_out') }}">
+                    <i class="fas fa-sign-out-alt"></i> Log out
+                </a>
+                {% endif %}
+            </div>
+        </nav>
         {% with messages = get_flashed_messages() %}
         {% if messages %}
         <ul>
@@ -36,6 +48,8 @@
         </ul>
         {% endif %}
         {% endwith %}
+        <div class="content">
         {% block body %}{% endblock body %}
+        </div>
     </body>
 </html>
