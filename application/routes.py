@@ -30,8 +30,8 @@ def login():
         return redirect(url_for('index'))
     return render_template('login.html', title='Sign In', form=form)
 
-@app.route('/sign-up', methods=['GET', 'POST'])
-def sign_up():
+@app.route('/register', methods=['GET', 'POST'])
+def register():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
     form = RegistrationForm()
@@ -42,7 +42,7 @@ def sign_up():
         db.session.commit()
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('login'))
-    return render_template('sign_up.html', title='Sign Up | Register', form=form)
+    return render_template('register.html', title='Register | Sign Up', form=form)
 
 @app.route('/log_out')
 def log_out():
