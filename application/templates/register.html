@@ -1,7 +1,11 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-    <div>Register | Sign Up</div>
+    <div>Register | Have an account? <a href="{{ url_for('index') }}">Login</a></div>
+    
+    <div class="imgcontainer">
+        <img src="{{ url_for('static', filename='/images/login/cat.jpg') }}" alt="Avatar" class="avatar">
+    </div>
     <form action="" method="POST">
     {{ form.hidden_tag() }}
         <p>

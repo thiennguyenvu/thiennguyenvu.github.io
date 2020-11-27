@@ -5,30 +5,40 @@ from flask_login import current_user, login_user, logout_user, login_required
 from application.models import User
 from werkzeug.urls import url_parse
 
-@app.route('/index')
-@app.route('/')
-@login_required
+brand = 'Thien\'s Website'
+@app.route('/index', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html', title='Home')
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if current_user.is_authenticated:
-        return redirect(url_for('index'))
-    form = LoginForm()
+    if current_user.is_authenticated:    
+        return render_template('index.html', brand=brand)
     
+    form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
         if user is None or not user.check_password(form.password.data):
             flash('Invalid username or password')
-            return redirect(url_for('login'))
+            return render_template('index.html', brand=brand, form=form)
         login_user(user, remember=form.remember_me.data)
-        # next_page = request.args.get('next')
-        # if not next_page or url_parse(next_page).netloc != '':
-        #     next_page = url_for('index')
-        # return redirect(url_for('next_page'))
-        return redirect(url_for('index'))
-    return render_template('login.html', title='Sign In', form=form)
+    return render_template('index.html', brand=brand, form=form)
+
+# @app.route('/login', methods=['GET', 'POST'])
+# def login():
+#     if current_user.is_authenticated:
+#         return redirect(url_for('index'))
+#     form = LoginForm()
+    
+#     if form.validate_on_submit():
+#         user = User.query.filter_by(username=form.username.data).first()
+#         if user is None or not user.check_password(form.password.data):
+#             flash('Invalid username or password')
+#             return redirect(url_for('login'))
+#         login_user(user, remember=form.remember_me.data)
+#         # next_page = request.args.get('next')
+#         # if not next_page or url_parse(next_page).netloc != '':
+#         #     next_page = url_for('index')
+#         # return redirect(url_for('next_page'))
+#         return redirect(url_for('index'))
+#     return render_template('login.html', title='Login', form=form)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -41,8 +51,9 @@ def register():
         db.session.add(user)
         db.session.commit()
         flash('Congratulations, you are now a registered user!')
-        return redirect(url_for('login'))
-    return render_template('register.html', title='Register | Sign Up', form=form)
+        return redirect(url_for('index'))
+    return render_template('register.html', brand=brand, title='Register', \
+                            form=form)
 
 @app.route('/log_out')
 def log_out():
@@ -52,9 +63,10 @@ def log_out():
 @app.route('/charts')
 @login_required
 def charts():
-    return render_template('charts.html', title='Charts')
+    return render_template('charts.html', brand=brand, title='Charts')
 
-@app.route('/profile')
-@login_required
-def profile():
-    return render_template('profile.html', title='Profile')
+@app.route('/<uname>')
+def profile(uname):
+    user = User.query.filter_by(username=uname).first_or_404()
+    return render_template('profile.html', brand=brand, title='Profile', \
+                            username=user)

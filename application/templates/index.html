@@ -2,7 +2,34 @@
 
 {% block body %}
 <div>
-    <p style="font-size: 30px; font-weight: bold; text-align: center;">Home</p>
-    <div>Hello, <b>{{ current_user.username }}!</b></div>
+    {% if current_user.is_anonymous %}
+        <div class="imgcontainer">
+            <img src="{{ url_for('static', filename='/images/login/cat.jpg') }}" alt="Avatar" class="avatar">
+        </div>
+        
+        <div class="click-to-register">New User? <a href="{{ url_for('register') }}">Click to Register!</a></div>
+        <form action="" method="POST" novalidate>
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.username.label }}<br>
+                {{ form.username(size=32) }}
+                {% for error in form.username.errors %}
+                <span style="color: red;">*{{ error }}</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.password.label }}<br>
+                {{ form.password(size=32) }}
+                {% for error in form.password.errors %}
+                <span style="color: red;">*{{ error }}</span>
+                {% endfor %}
+            </p>
+            <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+            <p>{{ form.submit() }}</p>
+        </form>
+    {% else %}
+        <p style="font-size: 30px; font-weight: bold; text-align: center;">Welcome to Vsocial</p>
+        <div>Hello, <b>{{ current_user.username }}!</b></div>
+    {% endif %}
 </div>
 {% endblock body %}
