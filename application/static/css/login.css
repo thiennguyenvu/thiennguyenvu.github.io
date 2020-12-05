@@ -62,6 +62,12 @@ span.psw {
     }
 }
 
-.click-to-register{
+.login-register{
     text-align: center;
+}
+
+.remember-me label{
+    display: unset !important;
+    color: #000 !important;
+    background-color: unset !important;
 }
