@@ -1,0 +1,278 @@
+{% extends 'layout.html' %}
+{% block body %}
+<style>
+    form {
+        border: none;
+    }
+
+    #form-plan label,
+    #form-history label,
+    #table-history label {
+        display: inline-block;
+        width: 100px;
+        margin: 5px 0px;
+        font-size: 13px;
+    }
+
+    #form-plan fieldset,
+    #form-history fieldset {
+        border: 1px groove #ddd;
+        padding: 0 25px 25px 25px;
+    }
+
+    #form-plan legend,
+    #form-history legend {
+        width: inherit;
+        padding: 0 10px;
+        border-bottom: none;
+    }
+
+    #div-button {
+        padding-top: 5px;
+    }
+
+    #div-button button:disabled {
+        background-color: #ddd;
+    }
+
+    #form-history button {
+        display: none;
+    }
+
+    #table-history {
+        padding-top: 10px;
+        width: 100%;
+    }
+
+    #table-history table {
+        margin-top: 15px;
+        width: 100%;
+        border: 1px groove #ddd;
+    }
+
+    #table-history th,
+    #table-history tr {
+        text-align: center;
+        border: 1px groove #ddd;
+    }
+
+    #table-history th.arm a,
+    #table-history th.ass a {
+        color: #d3d3d3;
+    }
+
+    .output {
+        margin-top: 15px;
+        width: 100%;
+        display: inline-block;
+        text-align: center;
+        background-color: #41B883;
+        color: white;
+    }
+
+    .opt-empty {
+        display: none;
+    }
+
+    .output-dept,
+    .output-line,
+    .output-model,
+    .output-plan {
+        font-size: 30px;
+    }
+</style>
+<!-- <p style="font-size: 30px; font-weight: bold; text-align: center; margin: 30px 0px;">Demo App</p> -->
+<div style="display: flex;">
+    <div class="container-fluid col-md-6">
+        <form id="form-plan" name="form-plan" action="{{ url_for('demo_app') }}" method="POST">
+            <div class="col-md-8">
+                <fieldset>
+                    <legend>Information Requirement</legend>
+                    <label for="department">Department: </label>
+                    <select id="department" name="department" required>
+                        <option value="" class="opt-empty"></option>
+                        {% for idept in department['Department'] %}
+                        <option value="{{ department['Department'][idept] }}">
+                            {{ department['Department'][idept] }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                    <br>
+                    <label for="line">Line: </label>
+                    <select id="line" name="line" required>
+                        <option value="" class="opt-empty"></option>
+                        {% for iline in line['Line'] %}
+                        <option value="{{ line['Line'][iline] }}">
+                            {{ line['Line'][iline] }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                    <br>
+                    <label for="model">Model: </label>
+                    <select id="model" name="model" required>
+                        <option value="" class="opt-empty"></option>
+                        {% for item in data['Model'] %}
+                        <option value="{{ data['Model'][item] }}">
+                            {{ data['Model'][item] }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                    <br>
+                    <label for="plan">Plan: </label>
+                    <input id="plan" name="plan" type="number" min="1" step="1" required>
+                    <br>
+                    <label for="version">Version of plan: </label>
+                    <input id="version" name="version" type="number" min="1" step="1" required>
+                    <br>
+                </fieldset>
+            </div>
+
+            <div id="div-button" class="col-md-4">
+                <button name="form-plan" type="submit" disabled>Create Plan</button>
+                <div class="note"><b>Note:</b>
+                    <p>Please fill information to start</p>
+                </div>
+                <div class="warning">{{ msg | safe }}</div>
+            </div>
+        </form>
+    </div>
+    <div class="container-fluid col-md-6">
+        <form id="form-history" name="form-history" action="{{ url_for('demo_app') }}" method="POST">
+            <div class="col-md-12">
+                <fieldset>
+                    <legend>View History</legend>
+                    <div class="col-md-12">
+                        <label for="date-history">Day: </label>
+                        <input id="date-history" name="date-history" type="date"
+                            value="{{ request.form['date-history'] }}">
+                    </div>
+                    <!-- <div>log['Date'][item], log['Time'][item],
+                    log['Department'][item], log['Line'][item],
+                    log['Model'][item], log['Plan'][item],
+                    log['File Name'][item]</div> -->
+                    <div class="col-md-12">
+                        <div>All: {{ log['Date'] }}</div><br>
+                        <table>
+                            <tr>
+                                <th>ARM</th>
+                            </tr>
+                            <tr>
+                                {% for item in log['Date'] %}
+                                    {% if log['Date'][item] == request.form['date-history'] %}
+                                        {% if log['Department'][item] == 'ARM' %}
+                                            <td>{{ log['Line'][item] }}</td>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                        </table>
+                        <select id="arm">
+                            {% for item in log['Date'] %}
+                            {% if log['Date'][item] == request.form['date-history'] %}
+                                {% if log['Department'][item] == 'ARM' %}
+                                    <option>{{ log['Line'][item] }}</option>
+                                {% endif %}      
+                            {% endif %}
+                            {% endfor %}
+                        </select>
+                        <div>ASS: 
+                            {% for item in log['Date'] %}
+                            {% if log['Date'][item] == request.form['date-history'] %}
+                                {% if log['Department'][item] == 'ASS' %}
+                                    {{ log['Line'][item] }}
+                                {% endif %}
+                            
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        <table id="table-history">
+                            <tr>
+                                <th colspan="2">ARM</th>
+                                <th colspan="2">ASS</th>
+                            </tr>
+                            <tr>
+                                <th class="arm arm-a"><a>Line A</a></th>
+                                <th class="arm arm-e">Line E</th>
+                                <th class="ass ass-a">Line A</th>
+                                <th class="ass ass-e">Line E</th>
+                            </tr>
+                            <tr>
+                                <th class="arm arm-b">Line B</th>
+                                <th class="arm arm-f">Line F</th>
+                                <th class="ass ass-b">Line B</th>
+                                <th class="ass ass-f">Line F</th>
+                            </tr>
+                            <tr>
+                                <th class="arm arm-c">Line C</th>
+                                <th class="arm arm-j">Line J</th>
+                                <th class="ass ass-c">Line C</th>
+                                <th class="ass ass-j">Line J</th>
+                            </tr>
+                            <tr>
+                                <th class="arm arm-d">Line D</th>
+                                <th></th>
+                                <th class="ass ass-d">Line D</th>
+                                <th></th>
+                            </tr>
+                        </table>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="col-md-12">
+                <button id="btn-history" name="form-history" type="submit">Search</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <div class="output">
+        <div class="output-dept col-md-4"></div>
+        <div class="output-line col-md-4"></div>
+        <div class="output-model col-md-4"></div>
+    </div>
+</div>
+{% endblock body %}
+{% block script %}
+<script>
+    jQuery(function ($) {
+        var dept = '', line = '', model = '', plan = '';
+        $('#department').on('change', function () {
+            $('#department .opt-empty').remove();
+            dept = $('#department option').filter(':selected').val();
+            $('.output-dept').text(dept);
+        });
+        $('#line').on('change', function () {
+            $('#line .opt-empty').remove();
+            line = $('#line option').filter(':selected').val();
+            $('.output-line').text('LINE ' + line);
+        })
+        $('#model').on('change', function () {
+            $('#model .opt-empty').remove();
+            model = $('#model option').filter(':selected').val();
+            $('.output-model').text('Model: ' + model);
+        })
+        $('#plan').on('input', function () {
+            plan = $('#plan').val();
+            $('.output-plan').text("");
+        });
+        $('#version').on('input', function () {
+            $version = $('#version').val();
+            if ($version === '') {
+                $('.output-version').text("");
+                $('#div-button button').attr("disabled", true);
+                $('.note').fadeIn(600);
+            }
+            else {
+                $('.output-version').text('Version: ' + $version);
+                $('#div-button button').removeAttr('disabled');
+                $('.note').fadeOut(600);
+            }
+        });
+
+        // History form submit
+        $('#date-history').on('change', function () {
+            $(this).closest('#form-history').submit();
+        });
+    });
+</script>
+{% endblock script %}

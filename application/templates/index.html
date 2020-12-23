@@ -36,8 +36,8 @@
         </form>
     </div>
     {% else %}
-    <p style="font-size: 30px; font-weight: bold; text-align: center;">Welcome to Vsocial</p>
-    <div>Hello, <b>{{ current_user.username }}!</b></div>
+    <p style="font-size: 30px; font-weight: bold; text-align: center;">Welcome to {{ brand }}</p>
+    <div>Hello, <b>{{ current_user.fullname }}!</b></div>
     {% endif %}
 </div>
 {% endblock body %}
