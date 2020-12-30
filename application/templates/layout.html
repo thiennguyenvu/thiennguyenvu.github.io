@@ -11,12 +11,12 @@
     {% block head %}
     {% endblock head %}
     <!-- external js STARTS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome/css/all.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/jszip.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.js"></script>
+    <script src="{{ url_for('static', filename='js/jszip.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/xlsx.js') }} "></script>
     <script src="{{ url_for('static', filename='js/general.js') }}"></script>
     <!-- external js ENDS -->
 </head>
@@ -66,7 +66,7 @@
         </div>
 
         <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
         {% block script %}
         {% endblock script %}
     </body>
