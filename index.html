@@ -12,6 +12,7 @@
         text-align: center;
         position: absolute;
         width: 100%;
+        display: none;
     }
 </style>
 <body>
@@ -27,7 +28,7 @@
 <script>
     jQuery(function($){
         var con_height = $('.container').height();
-        $('.container').css("top", "calc(50% - " + con_height/2 + "px)");
+        $('.container').css({"top" : "calc(50% - " + con_height/2 + "px)" , "display":"block"});
     });
 </script>
 </html>
