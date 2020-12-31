@@ -1,11 +1,33 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Web của Thiên</title>
-    </head>
-    <body>
+<head>
+    <meta charset="utf-8">
+    <title>Web của Thiên</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<style>
+    .container{
+        text-align: center;
+        position: absolute;
+        width: 100%;
+    }
+</style>
+<body>
+    <div class="container">
         <div>Chưa có thời gian viết lại web, thôi để như vầy đã.</div>
         <div>Vậy là sắp qua năm mới rồi...</div>
-    </body>
+        <div>Chúc mọi người một năm mới vui vẻ</div>
+    </div>
+</body>
+<iframe src="https://www.nhaccuatui.com/mh/auto/WwaehzZ8yV" width="0" height="0" frameborder="0" allowfullscreen
+    allow="autoplay"></iframe>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/run-firework.js"></script>
+<script>
+    jQuery(function($){
+        var con_height = $('.container').height();
+        $('.container').css("top", "calc(50% - " + con_height/2 + "px)");
+    });
+</script>
 </html>
