@@ -467,14 +467,14 @@
 <script>
   jQuery(function ($) {
     var lastScrollTop = 0;
-    var limit = 850;
+    var limit = 900;
 
     $(window).scroll(function (e) {
       var st = $(this).scrollTop();
       // console.log("ST: " + st);
       // console.log("limit: " + limit);
       if (st > limit) {
-        $(".default-header .container").slideUp(0.1);
+        $(".default-header .container").slideUp(100);
         $(".main-nav")
           .removeClass("default-header")
           .addClass("switched-header");

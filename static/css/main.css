@@ -42,6 +42,10 @@
   color: white;
 }
 
+.main-nav .ta-center {
+  max-height: 60px !important;
+}
+
 .ta-center {
   text-align: center;
 }
@@ -452,6 +456,10 @@ ul {
   .img-profile,
   .col-sm-2.ta-center {
     /* display: none !important; */
+  }
+
+  .main-nav .ta-center {
+    max-height: unset !important;
   }
 
   .main-nav .col-sm-5,
