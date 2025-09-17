@@ -50,6 +50,10 @@
   text-align: right;
 }
 
+.mt-80 {
+  margin-top: 80px;
+}
+
 .mt-40 {
   margin-top: 40px;
 }
@@ -85,9 +89,35 @@
   margin-bottom: 200px;
 }
 
-.short-email a {
+/* Short Contact */
+.background-contact {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 25px;
+  width: 48%;
+  padding: 15px;
+  margin: 10px;
+}
+
+.short-contact {
+  float: left;
+  margin: 10px 0px;
+}
+
+.short-contact svg {
   color: var(--primary-color);
   font-size: 25px;
+  margin-right: 15px;
+}
+
+.short-contact a {
+  color: var(--primary-color);
+  font-size: 25px;
+}
+
+.short-contact .info {
+  color: #42b883;
+  font-size: 27px;
+  font-weight: bold;
 }
 
 .container {
@@ -206,7 +236,7 @@ ul {
 }
 
 .bg-color-7 {
-  background-color: #cadcc4;
+  background-color: #e6d5c3;
 }
 
 /* .clearfix::before,
@@ -234,6 +264,7 @@ ul {
   text-decoration: none;
   font-weight: bold;
   width: 133px;
+  font-size: 10px;
 }
 
 .menu li svg {
@@ -274,9 +305,47 @@ ul {
   top: 2px;
 }
 
+.owner-name {
+  font-size: 3.5rem;
+}
+
+.owner-position {
+  font-size: 1.5rem;
+}
+
+.company-name {
+  font-weight: bold;
+  color: var(--primary-color);
+  font-size: calc(2rem + .9vw);
+}
+
+.employee-position {
+  font-style: italic;
+  color: #666666;
+  font-weight: bold;
+  font-size: calc(1rem + .9vw);
+}
+
+.subsection {
+  font-size: calc(0.5rem + .9vw);
+  font-weight: bold;
+}
+
+.title {
+  font-size: calc(1.25rem + .9vw) !important;
+}
+
+.text {
+  font-size: 1.2rem;
+}
+
 @media only screen and (min-width: 1200px) {
   .block-background-image .container {
     max-width: 1140px;
+  }
+
+  .background-contact {
+    display: grid;
   }
 }
 
@@ -298,7 +367,7 @@ ul {
     border: none;
   }
 
-  .switched-header .container .col-sm-2{
+  .switched-header .container .col-sm-2 {
     position: fixed;
     z-index: 5;
     top: 0px;
@@ -325,12 +394,18 @@ ul {
     margin-left: 40px;
   }
 
-  .short-email {
+  /* Contact Mobile */
+  .background-contact {
+    display: grid;
+    margin: 5px;
+  }
+
+  .short-contact {
     font-size: 32px;
     margin-right: 40px;
   }
 
-  .short-email svg {
+  .short-contact svg {
     font-size: 40px;
     margin-left: 5px;
   }
@@ -405,9 +480,31 @@ ul {
   .text {
     font-size: 2rem;
   }
-  
+
   .title {
     font-size: calc(2.25rem + .9vw) !important;
+  }
+
+  .company-name {
+    font-size: calc(1.5rem + .9vw) !important;
+  }
+
+  .employee-position {
+    font-size: calc(1.5rem + .9vw) !important;
+  }
+
+  .contact-mobile {
+    position: relative;
+    top: 410px;
+  }
+
+  .owner-mobile {
+    position: relative;
+    top: -380px;
+  }
+
+  .print-cv-mobile {
+    display: none;
   }
 }
 
@@ -434,7 +531,26 @@ ul {
 }
 
 @media only screen and (max-width: 575px) {
-  .mini-game {
-  
+  .text li {
+    font-size: 2rem !important;
+  }
+}
+
+@media print {
+  @page {
+    size: A3 portrait;
+  }
+
+  .print-forblock {
+    display: block;
+  }
+
+  .page-break {
+    page-break-before: always;
+    /* Start with new page */
+  }
+
+  .no-print {
+    display: none !important;
   }
 }
