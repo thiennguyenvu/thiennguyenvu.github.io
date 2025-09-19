@@ -16,11 +16,15 @@
 
   /* Neutral scale */
   --neutral-light: hsl(0, 0%, 60%);
-  /* #999999 */
   --neutral: hsl(0, 0%, 40%);
-  /* #666666 */
   --neutral-dark: hsl(0, 0%, 20%);
-  /* #333333 */
+}
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 /* Bg-cover */
