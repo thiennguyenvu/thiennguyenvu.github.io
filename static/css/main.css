@@ -3,7 +3,8 @@
   --primary-s: 49%;
   --primary-l: 49%;
 
-  --primary-color: hsl(var(--primary-h), var(--primary-s), var(--primary-l)); /* #42b883; */
+  --primary-color: hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+  /* #42b883; */
 
   /* Light */
   --primary-light-1: hsl(var(--primary-h), var(--primary-s), 95%);
@@ -14,16 +15,20 @@
   --primary-dark-2: hsl(var(--primary-h), var(--primary-s), 25%);
 
   /* Neutral scale */
-  --neutral-light: hsl(0, 0%, 60%);  /* #999999 */
-  --neutral: hsl(0, 0%, 40%);        /* #666666 */
-  --neutral-dark: hsl(0, 0%, 20%);   /* #333333 */
+  --neutral-light: hsl(0, 0%, 60%);
+  /* #999999 */
+  --neutral: hsl(0, 0%, 40%);
+  /* #666666 */
+  --neutral-dark: hsl(0, 0%, 20%);
+  /* #333333 */
 }
 
 /* Bg-cover */
 .block-background-image {
   background-image: url("../img/bg-1.jpg");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 240%;
+  background-position: 45% 0%;
   background-attachment: fixed;
   padding: 200px 0px;
   position: relative;
@@ -260,12 +265,6 @@ ul {
   background-color: #e6d5c3;
 }
 
-/* .clearfix::before,
-.clearfix::after {
-  display: table !important;
-  content: " ";
-} */
-
 .menu li {
   display: inline-block;
   border-left: 1px solid #eaeaea;
@@ -352,7 +351,8 @@ ul {
   font-weight: bold;
 }
 
-.title, .title-light {
+.title,
+.title-light {
   font-size: calc(1.25rem + .9vw) !important;
 }
 
@@ -368,24 +368,20 @@ ul {
   font-size: 1.2rem;
 }
 
-@media only screen and (min-width: 1200px) {
-  .block-background-image .container {
-    max-width: 1140px;
-  }
 
-  .background-contact {
-    display: grid;
+
+@media only screen and (min-width: 768px) {
+  .block-background-image {
+    background-size: cover;
+    background-position: unset;
   }
 }
 
 /* Menu mobile, tablet */
 @media only screen and (max-width: 991px) {
-  .block-background-image {
-    background-size: contain;
-  }
-
   .footer-img {
     background-size: cover;
+    background-position: 35% 50%;
   }
 
   .img-profile img {
@@ -563,11 +559,25 @@ ul {
   }
 }
 
-@media only screen and (max-width: 575px) {
+@media only screen and (min-width: 1200px) {
+  .block-background-image .container {
+    max-width: 1140px;
+  }
+
+  .block-background-image {
+    background-size: cover;
+  }
+
+  .background-contact {
+    display: grid;
+  }
+}
+
+/* @media only screen and (max-width: 575px) {
   .text li {
     font-size: 2rem !important;
   }
-}
+} */
 
 @media print {
   @page {
