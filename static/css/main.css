@@ -1,5 +1,22 @@
 :root {
-  --primary-color: #42b883;
+  --primary-h: 164;
+  --primary-s: 49%;
+  --primary-l: 49%;
+
+  --primary-color: hsl(var(--primary-h), var(--primary-s), var(--primary-l)); /* #42b883; */
+
+  /* Light */
+  --primary-light-1: hsl(var(--primary-h), var(--primary-s), 95%);
+  --primary-light-2: hsl(var(--primary-h), var(--primary-s), 75%);
+
+  /* Dark */
+  --primary-dark-1: hsl(var(--primary-h), var(--primary-s), 35%);
+  --primary-dark-2: hsl(var(--primary-h), var(--primary-s), 25%);
+
+  /* Neutral scale */
+  --neutral-light: hsl(0, 0%, 60%);  /* #999999 */
+  --neutral: hsl(0, 0%, 40%);        /* #666666 */
+  --neutral-dark: hsl(0, 0%, 20%);   /* #333333 */
 }
 
 /* Bg-cover */
@@ -196,7 +213,7 @@ ul {
 }
 
 .footer-img {
-  background-image: url("../img/wallpaper.jpg");
+  background-image: url("../img/bg-3.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -216,11 +233,11 @@ ul {
 }
 
 .bg-color-1 {
-  background-color: #f4f9f5;
+  background-color: var(--primary-light-1);
 }
 
 .bg-color-2 {
-  background-color: #a9e1cd;
+  background-color: var(--primary-light-2);
 }
 
 .bg-color-3 {
@@ -304,7 +321,7 @@ ul {
 .name-profile h5 span {
   display: block;
   font-size: 12px;
-  color: #999999;
+  color: var(--neutral);
   position: relative;
   top: 2px;
 }
@@ -325,7 +342,7 @@ ul {
 
 .employee-position {
   font-style: italic;
-  color: #666666;
+  color: var(--neutral);
   font-weight: bold;
   font-size: calc(1rem + .9vw);
 }
@@ -335,8 +352,16 @@ ul {
   font-weight: bold;
 }
 
-.title {
+.title, .title-light {
   font-size: calc(1.25rem + .9vw) !important;
+}
+
+.title {
+  color: var(--primary-color);
+}
+
+.title-light {
+  color: #ffffff;
 }
 
 .text {
