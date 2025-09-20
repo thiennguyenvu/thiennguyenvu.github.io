@@ -1,5 +1,5 @@
 # thiennguyenvu.github.io
-Create quickly beauty template CV. See live template at `https://thiennguyenvu.github.io/`
+Create quickly beauty template CV. See live template at [https://thiennguyenvu.github.io/](https://thiennguyenvu.github.io/)
 
 ## User guidle
 - Download source code.
