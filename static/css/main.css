@@ -222,7 +222,11 @@ ul {
   display: none;
 }
 
-.default-header .name-profile, .switched-header .name-profile {
+.default-header .name-profile {
+  display: none;
+}
+
+.switched-header .name-profile {
   display: block;
 }
 
