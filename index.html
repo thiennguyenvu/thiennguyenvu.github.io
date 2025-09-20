@@ -498,32 +498,21 @@
     jQuery(function ($) {
         var lastScrollTop = 0;
         var limit = 900;
+        if (window.innerWidth <= 991) limit = 500;
 
         $(window).scroll(function (e) {
             var st = $(this).scrollTop();
-            // console.log("ST: " + st);
-            // console.log("limit: " + limit);
-            if ($(".main-nav").hasClass("switched-header")) {
-                $(".img-profile").css("display", "none");
-            }
-
-            if ($(".main-nav .container").hasClass("show-menu")) {
-                $(".img-profile").css("display", "none");
-            }
-            else {
-                $(".img-profile").css("display", "block");
-            }
+            console.log("ST: " + st);
+            console.log("limit: " + limit);
 
             if (st >= limit) {
                 $(".main-nav")
                     .removeClass("default-header")
                     .addClass("switched-header");
-                $(".img-profile").css("display", "none");
             } else {
                 $(".main-nav")
                     .removeClass("switched-header")
                     .addClass("default-header");
-                $(".img-profile").css("display", "block");
             };
 
             lastScrollTop = st;
@@ -535,11 +524,9 @@
             if (display == "none") {
                 $(".menu").slideDown();
                 $(".main-nav .container").addClass("show-menu");
-                $(".img-profile").css("display", "none");
             } else {
                 $(".menu").slideUp();
                 $(".main-nav .container").removeClass("show-menu");
-                $(".img-profile").css("display", "block");
             }
         });
     });

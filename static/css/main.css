@@ -214,16 +214,20 @@ ul {
   display: block;
 }
 
+.default-header .show-menu .img-profile {
+  display: none;
+}
+
 .switched-header .img-profile {
   display: none;
 }
 
-.default-header .name-profile {
-  display: none;
+.default-header .name-profile, .switched-header .name-profile {
+  display: block;
 }
 
-.switched-header .name-profile {
-  display: block;
+.switched-header .show-menu .name-profile {
+  display: none;
 }
 
 .switched-header .mobile-btn {
@@ -430,8 +434,26 @@ ul {
     left: 80px;
   }
 
-  .switched-header .name-profile {
+  .default-header .name-profile {
+    display: block;
+  }
+
+  .default-header .show-menu .name-profile, .default-header .show-menu .img-profile {
     display: none;
+  }
+
+  .switched-header .name-profile {
+    position: absolute;
+    left: -60px;
+    z-index: 3;
+  }
+
+  .switched-header .show-menu .name-profile {
+    display: none;
+  }
+
+  .switched-header .container {
+    z-index: 2;
   }
 
   .owner-name {
