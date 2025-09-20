@@ -164,7 +164,7 @@ body {
 }
 
 .short-contact .info {
-  color: #42b883;
+  color: var(--primary-color);
   font-size: 27px;
   font-weight: bold;
 }
