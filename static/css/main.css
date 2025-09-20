@@ -58,6 +58,7 @@ body {
 .block-teaser .container {
   position: relative;
   z-index: 1;
+  top: -170px;
 }
 
 .block-teaser .container h3 {
@@ -120,7 +121,7 @@ body {
 }
 
 .owner-name {
-  font-size: 6rem;
+  font-size: 5rem;
 }
 
 .owner-position {
@@ -159,6 +160,7 @@ body {
   font-size: 25px;
   display: inline-flex;
   align-items: center;
+  text-decoration: none;
 }
 
 .short-contact .info {
@@ -235,7 +237,7 @@ ul {
 }
 
 .nav-container.base {
-  margin-top: -110px;
+  margin-top: -300px;
 }
 
 .footer-img {
@@ -366,7 +368,7 @@ ul {
 
 .title,
 .title-light {
-  font-size: calc(2.5rem + .9vw) !important;
+  font-size: calc(2rem + .9vw) !important;
 }
 
 .title {
@@ -378,10 +380,12 @@ ul {
 }
 
 .text {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
-
+.contact-mobile {
+  margin-bottom: 40px;
+}
 
 @media only screen and (min-width: 768px) {
   .block-background-image {
@@ -392,6 +396,10 @@ ul {
 
 /* Menu mobile, tablet */
 @media only screen and (max-width: 991px) {
+  .nav-container.base {
+    margin-top: -110px;
+  }
+
   .block-teaser {
     height: 570px;
   }
@@ -460,10 +468,6 @@ ul {
   .short-contact {
     font-size: 15px;
     margin: 5px 0px;
-  }
-
-  .short-contact a {
-    text-decoration: none;
   }
 
   .short-contact .info {
@@ -641,5 +645,62 @@ ul {
 
   .no-print {
     display: none !important;
+  }
+
+  /* Margin for wallpaper */
+  /* .block-teaser {
+    margin-top: -200px;
+  } */
+
+  /* Process contact when print */
+  #contact {
+    display: none;
+  }
+
+  .owner-mobile {
+    position: relative;
+    top: -220px;
+  }
+
+  .contact-mobile>.background-contact {
+    margin-right: 0;
+    position: relative;
+    bottom: -300px;
+  }
+
+  .background-contact:nth-of-type(2) {
+    display: none !important;
+  }
+
+  .block-background-image {
+    background-size: 100%;
+    background-position: 20% 50%;
+  }
+
+  .background-contact {
+    display: grid;
+    margin: auto;
+    margin-right: 10px;
+    align-items: center;
+    width: 23%;
+  }
+
+  .short-contact {
+    font-size: 15px;
+    margin: 5px 0px;
+  }
+
+  .short-contact .info {
+    font-size: 10px;
+  }
+
+  .short-contact svg {
+    width: 25px;
+    font-size: 20px;
+    margin-right: 5px;
+  }
+
+  .short-contact .fa-location-dot {
+    margin-right: 5px !important;
   }
 }
