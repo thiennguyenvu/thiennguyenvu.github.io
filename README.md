@@ -1,7 +1,12 @@
 # thiennguyenvu.github.io
-Create quickly beauty template CV. See live template at [https://thiennguyenvu.github.io/](https://thiennguyenvu.github.io/)
+[![GitHub Pages](https://img.shields.io/badge/GitHub-Pages-blue?logo=github)](https://thiennguyenvu.github.io/)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-## User guidle
+Create quickly beauty template CV. 
+
+**Live demo:** [thiennguyenvu.github.io](https://thiennguyenvu.github.io/)
+
+## 🚀 User guidle
 - Download source code.
 - Open `index.html` and edit any content.
 
@@ -32,3 +37,6 @@ class `.block-background-image` in `static/css/main.css` at line `32`
 ![alt text](image.png)
 
 - Click `Save` and enjoy your CV.
+
+## 📄 License
+This project is licensed under the [MIT License](LICENSE).
