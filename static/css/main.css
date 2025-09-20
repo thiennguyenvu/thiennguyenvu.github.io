@@ -623,12 +623,6 @@ ul {
   }
 }
 
-/* @media only screen and (max-width: 575px) {
-  .text li {
-    font-size: 2rem !important;
-  }
-} */
-
 @media print {
   @page {
     size: A3 portrait;
@@ -646,11 +640,6 @@ ul {
   .no-print {
     display: none !important;
   }
-
-  /* Margin for wallpaper */
-  /* .block-teaser {
-    margin-top: -200px;
-  } */
 
   /* Process contact when print */
   #contact {
@@ -673,8 +662,7 @@ ul {
   }
 
   .block-background-image {
-    background-size: 100%;
-    background-position: 20% 50%;
+    background-size: contain;
   }
 
   .background-contact {
